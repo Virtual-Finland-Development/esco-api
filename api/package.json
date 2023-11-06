@@ -1,0 +1,17 @@
+{
+  "name": "esco-api",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist",
+    "dev": "bun --watch run src/index.ts",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "rimraf": "^5.0.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

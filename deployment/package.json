@@ -1,0 +1,8 @@
+{
+  "name": "escoapi-infra",
+  "main": "index.ts",
+  "dependencies": {
+    "@pulumi/aws": "^6.7.0",
+    "rimraf": "^5.0.5"
+  }
+}
