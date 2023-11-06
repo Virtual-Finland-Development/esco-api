@@ -1,4 +1,4 @@
-import { readResource } from "../resources";
+import { readResource } from "../services/resource-service";
 
 export default async function (_: Request): Promise<Response> {
   const resource = await readResource("business-finland-esco-v1_1_1-occupations.json");

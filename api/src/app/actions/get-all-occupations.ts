@@ -1,4 +1,4 @@
-import { readRawResource } from "../resources";
+import { readRawResource } from "../services/resource-service";
 
 export default async function (_: Request): Promise<Response> {
   const resource = await readRawResource("occupations.json");
