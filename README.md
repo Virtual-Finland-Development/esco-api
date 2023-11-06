@@ -16,10 +16,10 @@ bun install
 
 ## Development
 
-To run:
+To run development server:
 
 ```bash
-bun run index.ts
+bun run dev
 ```
 
 ## Deployment
