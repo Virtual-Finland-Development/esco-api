@@ -1,16 +1,12 @@
-import { getAllRequestInputParams } from "../parsers/request-input";
-import { transformOccupations } from "../parsers/transformers";
+import OccupationsResponseSchema from "../models/schemas/OccupationsResponseSchema";
 import { readResource } from "../services/resource-service";
+import { getAllRequestInputParams } from "../utilities/request-input";
+import { createGoodResponse } from "../utilities/responses";
+import { transformOccupations } from "../utilities/transformers";
 
 export default async function (request: Request): Promise<Response> {
   const resource = await readResource("business-finland-esco-v1_1_1-occupations.json");
   const inputParams = getAllRequestInputParams(request);
   const responseData = transformOccupations(resource, inputParams);
-
-  return new Response(JSON.stringify(responseData), {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-    },
-  });
+  return createGoodResponse(responseData, OccupationsResponseSchema);
 }

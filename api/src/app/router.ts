@@ -3,7 +3,7 @@ import getCuratedOccupations from "./actions/get-curated-occupations";
 import getSkills from "./actions/get-skills";
 import healthCheck from "./actions/health-check";
 
-export default function execute(request: Request) {
+export default function execute(request: Request): Promise<Response> {
   const method = request.method;
   const path = new URL(request.url).pathname;
 
@@ -19,6 +19,6 @@ export default function execute(request: Request) {
     case "POST /Employment/EscoOccupations_v0.1":
       return getCuratedOccupations(request);
     default:
-      return new Response("Not found", { status: 404 });
+      return Promise.resolve(new Response("Not found", { status: 404 }));
   }
 }
