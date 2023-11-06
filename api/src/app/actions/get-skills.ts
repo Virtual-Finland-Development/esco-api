@@ -1,9 +1,16 @@
+import { array, length, object, parse, record, string } from "valibot";
 import { readRawResource } from "../services/resource-service";
 
-export default async function (_: Request): Promise<Response> {
-  const resource = await readRawResource("skills.json");
+const SkillSchema = object({
+  uri: string(),
+  prefLabel: record(string([length(2)]), string()),
+});
 
-  return new Response(resource, {
+export default async function (_: Request): Promise<Response> {
+  const resourceData = await readRawResource("skills.json");
+  const resource = parse(array(SkillSchema), resourceData);
+
+  return new Response(JSON.stringify(resource), {
     status: 200,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
