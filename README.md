@@ -1,6 +1,6 @@
 # esco-api
 
-Provider API for the ESCO codesets.
+Provider API for the ESCO datasets.
 
 ## Requirements
 
