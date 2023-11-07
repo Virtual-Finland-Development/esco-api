@@ -19,5 +19,16 @@ The steps to deploy the API are:
 
 - build the lambda function using the bun-bundler
 - build the bun-lambda layer for the custom runtime
-- using pulumi, deploy the bun-lambda layer
-- using pulumi, deploy the lambda function
+- using pulumi, deploy the bun-lambda layer and the lambda function
+
+To simplify the process, use the deployment make-script:
+
+> pre-requisites:
+> - pulumi installed
+> - AWS credentials configured
+> - nodejs installed
+> - bun-bundler installed
+
+```bash
+make deploy
+```

@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import handler from "../src/index";
+import handler from "../src/handler";
 
 test("Good response", async () => {
   const request = new Request("http://localhost:8787/Employment/EscoOccupations_v1.0", {
