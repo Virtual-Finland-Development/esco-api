@@ -39,7 +39,7 @@ export function createEscoApiLambdaFunction(bunLayer: aws.lambda.LayerVersion) {
     handler: "index.handler",
     timeout: 30,
     memorySize: 1024,
-    code: new pulumi.asset.FileArchive("./dist"),
+    code: new pulumi.asset.FileArchive("../api/dist"),
     tags: getTags(),
     environment: {
       variables: {},
