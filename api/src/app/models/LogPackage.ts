@@ -1,4 +1,4 @@
-type LogPackage = {
+export type LogPackage = {
   trace: {
     id: string;
     amazonTraceId?: string;
@@ -15,5 +15,3 @@ type LogPackage = {
   };
   errors?: any[];
 };
-
-export default LogPackage;

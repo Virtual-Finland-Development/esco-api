@@ -1,4 +1,4 @@
-import { EscoOccupation } from "../models/schemas/EscoOccupationSchema";
+import { EscoOccupation } from "../models/EscoOccupation";
 import EmploymentOccupation from "../models/types/EmploymentOccupation";
 import { getPaginationParams, isEnabledFilter, isEnabledFormat } from "./api-filter-params";
 import { filterCommonEscoDataSet } from "./esco-formatters";

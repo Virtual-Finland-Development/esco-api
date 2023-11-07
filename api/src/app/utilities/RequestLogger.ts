@@ -1,5 +1,5 @@
 import { ValiError } from "valibot";
-import LogPackage from "../models/types/LogPackage";
+import { LogPackage } from "../models/LogPackage";
 import { cutTooLongString } from "./transformers";
 
 class RequestLogger {

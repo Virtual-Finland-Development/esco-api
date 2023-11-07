@@ -1,15 +1,11 @@
-import { array, parse } from "valibot";
-import CommonEscoFilterInputSchema from "../models/schemas/CommonEscoFilterInputSchema";
-import SkillSchema from "../models/schemas/SkillSchema";
-import { readResource } from "../services/resource-service";
+import { array } from "valibot";
+import { SkillSchema } from "../models/Skill";
 import { filterCommonEscoDataSet } from "../utilities/esco-formatters";
-import { getAllRequestInputParamsAsObject } from "../utilities/request-input";
+import { parseEscoResourceRequest } from "../utilities/request-input";
 import { createGoodResponse } from "../utilities/responses";
 
 export default async function (request: Request): Promise<Response> {
-  const resource = await readResource("skills.json");
-  const params = await getAllRequestInputParamsAsObject(request);
-  parse(CommonEscoFilterInputSchema, params); // Validate params
+  const { resource, params } = await parseEscoResourceRequest(request, "skills.json");
   const responseData = filterCommonEscoDataSet(resource, params);
   return createGoodResponse(responseData, array(SkillSchema));
 }

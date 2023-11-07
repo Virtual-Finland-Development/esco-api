@@ -1,4 +1,4 @@
-import EscoDataUnit from "../models/types/EscoDataUnit";
+import { EscoDataUnit } from "../models/EscoDataUnit";
 import { getLocalesFilter, getPaginationParams, getSearchPhrases, isEnabledFormat } from "./api-filter-params";
 
 /**

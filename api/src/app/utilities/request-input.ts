@@ -1,3 +1,21 @@
+import { parse } from "valibot";
+import { CommonEscoFilterInputSchema } from "../models/CommonEscoFilterInput";
+import { readResource } from "../services/resource-service";
+
+/**
+ * Retrieves esco resource and merges and validates request query- and body params
+ *
+ * @param request
+ * @param resourceFilename
+ * @returns
+ */
+export async function parseEscoResourceRequest(request: Request, resourceFilename: string) {
+  const resource = await readResource(resourceFilename);
+  const params = await getAllRequestInputParamsAsObject(request);
+  parse(CommonEscoFilterInputSchema, params); // Validate params
+  return { resource, params };
+}
+
 /**
  * Retrieves and merges request query- and body params
  *
