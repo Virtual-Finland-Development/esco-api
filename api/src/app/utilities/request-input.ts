@@ -4,7 +4,7 @@
  * @param request
  * @returns
  */
-export async function getAllRequestInputParams(request: Request): Promise<Record<string, string>> {
+export async function getAllRequestInputParamsAsObject(request: Request): Promise<Record<string, string>> {
   const searchParams = new URL(request.url).searchParams;
   const params = Object.fromEntries(searchParams);
   if (request.method === "POST") {

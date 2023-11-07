@@ -5,6 +5,12 @@ import { getLocalesFilter, getPaginationParams, getSearchPhrases, isEnabledForma
  * Common ESCo data unit interface
  */
 export function filterCommonEscoDataSet<T extends EscoDataUnit>(items: T[], params?: Record<string, string>) {
+  // Early return if no params
+  if (!params || Object.keys(params).length === 0) {
+    return items;
+  }
+
+  // Apply filters
   const localesFilter = getLocalesFilter(params);
   if (localesFilter.length > 0) {
     items = items.map((item: T) => {
