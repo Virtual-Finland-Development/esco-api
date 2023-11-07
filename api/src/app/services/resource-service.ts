@@ -1,14 +1,14 @@
+const memoryCache = new Map<string, any>();
+
 export async function readResource(fileName: string) {
-  const file = getResourceFile(fileName);
-  return await file.json();
-}
+  if (memoryCache.has(fileName)) {
+    return memoryCache.get(fileName);
+  }
 
-export async function readRawResource(fileName: string) {
-  const file = getResourceFile(fileName);
-  return await file.text();
-}
-
-export function getResourceFile(fileName: string) {
   const path = `./data/${fileName}`;
-  return Bun.file(path);
+  const file = Bun.file(path);
+  const data = await file.json();
+  memoryCache.set(fileName, data);
+
+  return data;
 }

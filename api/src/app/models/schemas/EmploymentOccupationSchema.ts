@@ -1,6 +1,6 @@
 import { array, object, string } from "valibot";
 
-const OccupationSchema = object({
+const EmploymentOccupationSchema = object({
   escoCode: string(),
   escoJobTitle: string(),
   alternativeTitles: array(string()),
@@ -8,4 +8,4 @@ const OccupationSchema = object({
   escoIdentifier: string(),
 });
 
-export default OccupationSchema;
+export default EmploymentOccupationSchema;

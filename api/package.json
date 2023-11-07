@@ -5,7 +5,10 @@
   "scripts": {
     "build": "bun build src/index.ts --outdir dist",
     "dev": "bun --watch run src/index.ts",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "test": "bun test",
+    "test:dev": "bun --watch test",
+    "lint": "bun lint"
   },
   "devDependencies": {
     "bun-types": "latest",

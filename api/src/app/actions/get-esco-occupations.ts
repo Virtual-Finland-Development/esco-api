@@ -1,13 +1,13 @@
 import { array } from "valibot";
-import SkillSchema from "../models/schemas/SkillSchema";
+import { EscoOccupationSchema } from "../models/schemas/EscoOccupationSchema";
 import { readResource } from "../services/resource-service";
-import { filterCommonEscoDataSet } from "../utilities/esco-formatters";
 import { getAllRequestInputParams } from "../utilities/request-input";
 import { createGoodResponse } from "../utilities/responses";
+import { transformEscoOccupations } from "../utilities/transformers";
 
 export default async function (request: Request): Promise<Response> {
-  const resource = await readResource("skills.json");
+  const resource = await readResource("occupations.json");
   const params = getAllRequestInputParams(request);
-  const responseData = filterCommonEscoDataSet(resource, params);
-  return createGoodResponse(responseData, array(SkillSchema));
+  const responseData = transformEscoOccupations(resource, params);
+  return createGoodResponse(responseData, array(EscoOccupationSchema));
 }

@@ -1,5 +1,6 @@
 import getAction from "./app/router";
 import RequestLogger from "./app/utilities/RequestLogger";
+import { createBadResponse } from "./app/utilities/responses";
 
 async function handleRequest(request: Request, logger: RequestLogger): Promise<Response> {
   try {
@@ -7,7 +8,7 @@ async function handleRequest(request: Request, logger: RequestLogger): Promise<R
     return await action(request);
   } catch (error: any) {
     logger.catchError(error);
-    return new Response(error.message, { status: 500 });
+    return createBadResponse(error.message, error.status);
   }
 }
 

@@ -1,5 +1,5 @@
-import getAllOccupations from "./actions/get-all-occupations";
-import getCuratedOccupations from "./actions/get-curated-occupations";
+import getEmploymentOccupations from "./actions/get-employment-occupations";
+import getEscoOccupations from "./actions/get-esco-occupations";
 import getSkills from "./actions/get-skills";
 import healthCheck from "./actions/health-check";
 
@@ -14,10 +14,10 @@ export default function getAction(request: Request): (request: Request) => Promi
     case "GET /skills":
       return getSkills;
     case "GET /occupations":
-      return getAllOccupations;
+      return getEscoOccupations;
     case "POST /Employment/EscoOccupations_v1.0":
     case "POST /Employment/EscoOccupations_v0.1":
-      return getCuratedOccupations;
+      return getEmploymentOccupations;
     default:
       throw new Error("Not found"); // @TODO
   }
