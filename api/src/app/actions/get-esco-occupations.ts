@@ -7,7 +7,7 @@ import { transformEscoOccupations } from "../utilities/transformers";
 
 export default async function (request: Request): Promise<Response> {
   const resource = await readResource("occupations.json");
-  const params = getAllRequestInputParams(request);
+  const params = await getAllRequestInputParams(request);
   const responseData = transformEscoOccupations(resource, params);
   return createGoodResponse(responseData, array(EscoOccupationSchema));
 }

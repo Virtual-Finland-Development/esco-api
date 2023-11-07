@@ -7,7 +7,7 @@ import { createGoodResponse } from "../utilities/responses";
 
 export default async function (request: Request): Promise<Response> {
   const resource = await readResource("skills.json");
-  const params = getAllRequestInputParams(request);
+  const params = await getAllRequestInputParams(request);
   const responseData = filterCommonEscoDataSet(resource, params);
   return createGoodResponse(responseData, array(SkillSchema));
 }

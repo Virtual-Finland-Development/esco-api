@@ -4,12 +4,12 @@
  * @param request
  * @returns
  */
-export function getAllRequestInputParams(request: Request): Record<string, string> {
+export async function getAllRequestInputParams(request: Request): Promise<Record<string, string>> {
   const searchParams = new URL(request.url).searchParams;
   const params = Object.fromEntries(searchParams);
-  if (request.method === "POST" && typeof request.body === "string") {
+  if (request.method === "POST") {
     try {
-      const body = JSON.parse(request.body);
+      const body = await request.json();
       if (typeof body === "object") {
         Object.assign(params, parseRequestInputParams(body));
       }

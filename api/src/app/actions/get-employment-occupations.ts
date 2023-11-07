@@ -6,7 +6,7 @@ import { transformEmploymentOccupations } from "../utilities/transformers";
 
 export default async function (request: Request): Promise<Response> {
   const resource = await readResource("business-finland-esco-v1_1_1-occupations.json");
-  const params = getAllRequestInputParams(request);
+  const params = await getAllRequestInputParams(request);
   const responseData = transformEmploymentOccupations(resource, params);
   return createGoodResponse(responseData, EmploymentOccupationsResponseSchema);
 }

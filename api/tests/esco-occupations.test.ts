@@ -11,7 +11,7 @@ test("Good response", async () => {
   expect(occupations[0]).toHaveProperty("uri");
 });
 
-test("Filtered response", async () => {
+test("Good filtered response", async () => {
   const request = new Request("http://localhost:8787/occupations?offset=0&limit=1");
   const response = await handler.fetch(request);
   expect(response.status).toBe(200);

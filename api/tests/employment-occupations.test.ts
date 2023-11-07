@@ -14,7 +14,7 @@ test("Good response", async () => {
   expect(responseData.occupations[0]).toHaveProperty("escoCode");
 });
 
-test("Filtered response", async () => {
+test("Good filtered response", async () => {
   const request = new Request("http://localhost:8787/Employment/EscoOccupations_v1.0", {
     method: "POST",
     body: JSON.stringify({
