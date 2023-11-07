@@ -1,7 +1,7 @@
 import getAction from "./app/router";
-import Logger from "./app/services/Logger";
+import RequestLogger from "./app/utilities/RequestLogger";
 
-async function handleRequest(request: Request, logger: Logger): Promise<Response> {
+async function handleRequest(request: Request, logger: RequestLogger): Promise<Response> {
   try {
     const action = getAction(request);
     return await action(request);
@@ -13,7 +13,7 @@ async function handleRequest(request: Request, logger: Logger): Promise<Response
 
 export default {
   async fetch(request: Request): Promise<Response> {
-    const logger = new Logger(request);
+    const logger = new RequestLogger(request);
     const response = await handleRequest(request, logger);
     logger.log(response);
     return response;

@@ -1,8 +1,8 @@
 import { ValiError } from "valibot";
 import LogPackage from "../models/types/LogPackage";
-import { cutTooLongString } from "../utilities/transformers";
+import { cutTooLongString } from "./transformers";
 
-class Logger {
+class RequestLogger {
   private readonly request: Request;
   private readonly errors: any[] = [];
 
@@ -13,6 +13,7 @@ class Logger {
   public log(response: Response): void {
     const log = this.parseLogPackage(this.request, response);
 
+    // Flag the log as an error if the status code is 404 or higher
     if (typeof log.response.statusCode !== "number" || log.response.statusCode >= 404) {
       console.error(JSON.stringify(log, null, 4));
     } else {
@@ -21,10 +22,10 @@ class Logger {
   }
 
   public catchError(error: Error | ValiError | any) {
-    this.errors.push(Logger.formatError(error));
+    this.errors.push(this.formatError(error));
   }
 
-  static formatError(error: Error | ValiError | any): any {
+  private formatError(error: Error | ValiError | any): any {
     if (error instanceof ValiError) {
       // Cleanup the vali error to make it more accessible: only show the first issue and remove the input
       return error.issues.slice(0, 1).map((i) => {
@@ -76,4 +77,4 @@ class Logger {
   }
 }
 
-export default Logger;
+export default RequestLogger;
