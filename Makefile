@@ -9,10 +9,12 @@ build-bun-runtime:
 	./deployment/bun-lambda/build-runtime.sh
 	@echo "> Building bun runtime completed!"
 
-build: build-bun-runtime
+build-app:
 	@echo "> Building app..."
 	cd api && bun run clean && bun run build
 	@echo "> Building app completed!"
+
+build: build-bun-runtime build-app
 
 test:
 	@echo "> Testing app..."

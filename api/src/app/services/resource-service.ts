@@ -12,7 +12,12 @@ export async function readResource(fileName: string) {
     throw new Error(`Resource file ${path} does not exist`);
   }
 
-  const data = await file.json();
+  // Bun json() is broken: https://github.com/oven-sh/bun/issues/5960
+  // const data = await file.json();
+  // Use stream() instead:
+  const stream = file.stream();
+  const data = await Bun.readableStreamToJSON(stream);
+
   memoryCache.set(fileName, data);
 
   return data;
