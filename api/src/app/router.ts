@@ -2,6 +2,7 @@ import getEmploymentOccupations from "./actions/get-employment-occupations";
 import getEscoOccupations from "./actions/get-esco-occupations";
 import getSkills from "./actions/get-skills";
 import healthCheck from "./actions/health-check";
+import { NotFoundException } from "./utilities/exceptions";
 
 export default function getAction(request: Request): (request: Request) => Promise<Response> {
   const method = request.method;
@@ -19,6 +20,6 @@ export default function getAction(request: Request): (request: Request) => Promi
     case "POST /Employment/EscoOccupations_v0.1":
       return getEmploymentOccupations;
     default:
-      throw new Error("Not found"); // @TODO
+      throw new NotFoundException();
   }
 }

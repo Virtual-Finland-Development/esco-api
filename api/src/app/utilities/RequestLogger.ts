@@ -15,9 +15,9 @@ class RequestLogger {
 
     // Flag the log as an error if the status code is not 200 or 404
     if (typeof log.response.statusCode !== "number" || (log.response.statusCode !== 200 && log.response.statusCode != 404)) {
-      console.error(JSON.stringify(log, null, 4));
+      console.error(log);
     } else {
-      console.log(JSON.stringify(log));
+      console.log(log);
     }
   }
 

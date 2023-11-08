@@ -46,8 +46,13 @@ export function createEscoApiLambdaFunction() {
     timeout: 30,
     memorySize: 1024,
     code: new pulumi.asset.FileArchive("../api/dist"),
-    tags: getTags(),
+    environment: {
+      variables: {
+        DATA_STORAGE_PATH: "/opt/data",
+      },
+    },
     layers: [bunRuntimeLayer.arn, escoDataLayer.arn],
+    tags: getTags(),
   });
 
   return {

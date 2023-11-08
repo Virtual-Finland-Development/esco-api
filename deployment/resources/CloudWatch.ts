@@ -22,7 +22,7 @@ export async function createCloudWatchLogSubFilter(escoApiLambda: aws.lambda.Fun
       getResourceName("CloudWatchLogSubFilter"),
       {
         logGroup: escoApiLogGroupName,
-        filterPattern: "ERROR",
+        filterPattern: '?"ERROR" ?"Error" ?"error"',
         destinationArn: errorSubLambdaArn,
       },
       {
