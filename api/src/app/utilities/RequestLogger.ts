@@ -60,9 +60,9 @@ class RequestLogger {
 
     return {
       trace: {
-        id: headers["x-request-trace-id"] || headers["x-amzn-trace-id"],
-        amazonTraceId: headers["x-amzn-trace-id"],
+        id: headers["x-request-trace-id"] || headers["x-amzn-requestid"],
         userAgent: headers["user-agent"],
+        sourceIp: headers["x-forwarded-for"],
       },
       request: {
         method: request.method,

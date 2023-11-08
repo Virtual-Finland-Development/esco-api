@@ -1,7 +1,6 @@
 export type LogPackage = {
   trace: {
     id: string;
-    amazonTraceId?: string;
     userAgent: string;
     sourceIp?: string;
   };
