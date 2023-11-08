@@ -1,6 +1,6 @@
 # esco-api
 
-Provider API for the ESCO datasets.
+API for the ESCO datasets.
 
 ## Project setup
 
