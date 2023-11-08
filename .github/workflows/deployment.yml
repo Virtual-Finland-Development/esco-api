@@ -1,0 +1,51 @@
+name: Build, Test, Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment where to deploy the stack (dev, staging)
+        type: environment
+        required: true
+  workflow_call:
+    inputs:
+      environment:
+        description: Environment where to deploy the stack (dev, staging)
+        type: string
+        required: true
+jobs:
+  build-test-deploy:
+    name: Build, test and deploy ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Setup bun.sh
+        uses: oven-sh/setup-bun@v1
+      - name: Test and build
+        run: |
+          make install
+          make test
+          make build
+      - name: Configure AWS credentials
+        uses: Virtual-Finland-Development/infrastructure/.github/actions/configure-aws-credentials@main
+        with:
+          environment: ${{ inputs.environment }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          pulumi-access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+      - name: Deploy Esco API
+        uses: pulumi/actions@v4
+        with:
+          work-dir: ./deployment
+          command: up
+          stack-name: virtualfinland/${{ inputs.environment }}
+          upsert: true
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
