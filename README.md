@@ -30,5 +30,5 @@ To simplify the process, use the deployment make-script:
 > - bun-bundler installed
 
 ```bash
-make deploy
+make deploy-all
 ```
