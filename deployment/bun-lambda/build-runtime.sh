@@ -7,7 +7,7 @@ if [ ! -f ./build-runtime.sh ]; then
 fi
 
 set -e
-git clone git@github.com:oven-sh/bun.git
+git clone https://github.com/oven-sh/bun.git
 cd bun/packages/bun-lambda
 bun install
 bun run build-layer
