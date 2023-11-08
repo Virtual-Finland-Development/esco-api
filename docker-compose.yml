@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  escoApi:
+    image: oven/bun
+    command: sh -c "bun install && bun run dev"
+    working_dir: /app
+    volumes:
+      - ./api:/app
+    stdin_open: true
+    tty: true
+    ports:
+      - 3560:3560
+    networks:
+      - vfd-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    labels:
+      - traefik.http.routers.escoApi.rule=Host(`esco-api.localhost`)
+
+networks:
+  vfd-network:
+    driver: bridge
+    external: true
