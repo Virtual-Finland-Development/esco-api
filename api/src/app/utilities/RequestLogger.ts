@@ -14,10 +14,11 @@ class RequestLogger {
     const log = this.parseLogPackage(this.request, response);
 
     // Flag the log as an error if the status code is not 200 or 404
+    // Override the bun logger default logging formats
     if (typeof log.response.statusCode !== "number" || (log.response.statusCode !== 200 && log.response.statusCode != 404)) {
-      console.error(log);
+      console.write(`ERROR: ${JSON.stringify(log)}\n`);
     } else {
-      console.log(log);
+      console.write(`${JSON.stringify(log)}\n`);
     }
   }
 
