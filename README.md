@@ -1,6 +1,6 @@
 # esco-api
 
-Provider API for the ESCO datasets.
+API for the ESCO datasets.
 
 ## Project setup
 
@@ -38,7 +38,7 @@ See the [./api/README.md](./api/README.md) for instructions on how to run the AP
 
 ## Deployment
 
-Publishing the API to the live environments is done by the CI/CD pipeline Github Actions. The pipeline uses pulumi to deploy the API to AWS. The API is a lambda function published as a function URL and it is run using a custom runtime and a lambda layer created by the [bun-lambda](https://github.com/oven-sh/bun/tree/main/packages/bun-lambda) helper.
+Publishing the API to the live environments is done by the CI/CD pipeline Github Actions defined [here](./.github/workflows/deployment.yml). The pipeline uses pulumi to deploy the API to AWS. The API is a lambda function published as a function URL and it is ran using a custom runtime and a lambda layer created by the [bun-lambda](https://github.com/oven-sh/bun/tree/main/packages/bun-lambda) helper.
 
 The steps to deploy the API are:
 
@@ -55,5 +55,5 @@ To simplify the process, use the deployment make-script:
 > - bun-bundler installed
 
 ```bash
-make deploy
+make deploy-all
 ```
