@@ -1,4 +1,4 @@
-import api from "./services/escoApi";
+import api from "./services/EscoDataServer";
 import config from "./utils/config";
 import { saveDataToJSONFile } from "./utils/files";
 import { omitObjectKeysNotIn } from "./utils/helpers";

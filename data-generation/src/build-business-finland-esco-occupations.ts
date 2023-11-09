@@ -1,9 +1,13 @@
-import api from "./services/escoApi";
-import KnownEscoCodes from "./utils/business-finland-esco-codes-guard";
+import { getKnownEscoCodesAsDefinedByDataspace } from "./services/DataspaceDefinitions";
+import api from "./services/EscoDataServer";
 import config from "./utils/config";
 import { saveDataToJSONFile } from "./utils/files";
 
 async function main() {
+  console.log("> Fetching dependencies..");
+  const knownEscoCodes = await getKnownEscoCodesAsDefinedByDataspace();
+  console.log(`> -- found ${knownEscoCodes.length} esco codes from the definitions.`);
+
   console.log("> Fetching occupations..");
   const allOccupations = await api.getOccupations();
   const obsoletes: any[] = [];
@@ -13,7 +17,7 @@ async function main() {
   for (const item of allOccupations) {
     if (item.status === "obsolete") {
       obsoletes.push(item);
-    } else if (KnownEscoCodes.includes(item.code)) {
+    } else if (knownEscoCodes.includes(item.code)) {
       occupations.push(item);
     } else {
       unknowns.push(item);
@@ -21,12 +25,13 @@ async function main() {
   }
 
   // Log counts
+  console.log("> Finished fetching occupations:");
   console.log("Total of", allOccupations.length, "items");
   console.log("Goods", occupations.length);
   console.log("Obsoletes", obsoletes.length);
   console.log("Unknown", unknowns.length);
-  console.log("Wanted total", KnownEscoCodes.length, "items");
-  if (KnownEscoCodes.length === occupations.length) {
+  console.log("Wanted total", knownEscoCodes.length, "items");
+  if (knownEscoCodes.length === occupations.length) {
     console.log("> All good!");
   } else {
     console.log("> Counts mismatch!");
