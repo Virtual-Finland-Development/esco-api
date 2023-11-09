@@ -22,3 +22,4 @@ To run development server:
 bun run dev
 ```
 
+The ESCO API should be available at [http://localhost:3560](http://localhost:3560)

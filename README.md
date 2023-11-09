@@ -10,6 +10,31 @@ Project is structured in folders:
 - [./data-generation](./data-generation): ESCO data generation scripts
 - [./deployment](./deployment): deployment scripts
 
+## Usage
+
+Run the application with docker compose or natively with bun.
+
+### With docker compose
+
+With docker compose, the following network must be created: `vfd-network`.
+
+Create the network with command:
+
+```
+docker network create vfd-network
+```
+
+Then start up the service with docker compose:
+
+```
+docker compose up
+```
+
+The ESCO API should be available at [http://localhost:3560](http://localhost:3560)
+
+### With bun
+
+See the [./api/README.md](./api/README.md) for instructions on how to run the API application with bun.
 
 ## Deployment
 
