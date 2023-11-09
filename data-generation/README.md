@@ -16,6 +16,8 @@
 -   start server with `npm run serve` (~30s boot time)
 -   in a separate terminal: run data building scripts with `npm run build:<feat>` eg. `npm run build:skills`
     -   or all the known building scripts: `npm run build`
+- install the built resources to the [API-project](../api) data folder: `npm run install-built-resources`
+
 
 ## Documentation
 

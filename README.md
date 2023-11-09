@@ -2,6 +2,24 @@
 
 API for the ESCO datasets.
 
+## Description
+
+The primary function of this API application is to provide a simple interface to the ESCO datasets. The API is intented to be deployd as an AWS lambda function and to be accessed through Virtual Finland Dataspace. The datasets are generated using the [ESCO data generation scripts](./data-generation) from the ESCO local server that can be downloaded from https://esco.ec.europa.eu/en/use-esco/download.
+
+
+Example query though the dataspace:
+
+```
+curl -X 'POST' \
+  'https://gateway.staging.datafinland.dev/Employment/EscoOccupations_v0.1?source=virtualfinland' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "limit": 1000,
+  "offset": 0
+}' 
+```
+
 ## Project setup
 
 Project is structured in folders:
