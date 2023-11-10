@@ -45,6 +45,7 @@ class RequestLogger {
       return {
         message: error.message,
         stack: error.stack,
+        cause: this.formatError(error.cause),
       };
     } else {
       try {
