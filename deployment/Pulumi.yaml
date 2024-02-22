@@ -3,4 +3,4 @@ description: Esco API infra builder
 runtime: nodejs
 config:
     aws:region: eu-north-1
-    esco-api:createCloudWatchLogAlert: false
+    esco-api:createCloudWatchLogAlert: false # Disable CloudWatch Log Alerting by default as the function is implemented separately from this project: https://github.com/Virtual-Finland-Development/monitoring/tree/main/cloudwatch-logs-alerts 
