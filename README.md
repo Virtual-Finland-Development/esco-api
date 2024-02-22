@@ -11,7 +11,7 @@ Example query though the dataspace:
 
 ```
 curl -X 'POST' \
-  'https://gateway.staging.datafinland.dev/Employment/EscoOccupations_v0.1?source=virtualfinland' \
+  'https://gateway.datafinland.com/Employment/EscoOccupations_v1.0?source=virtualfinland' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
