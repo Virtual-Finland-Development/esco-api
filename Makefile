@@ -21,7 +21,7 @@ test:
 	cd api && bun run test
 	@echo "> Testing app completed!"
 
-deploy: build
+deploy: install build
 	@echo "> Deploying..."
 	pulumi -C ./deployment up
 	@echo "> Deployment finished!"
