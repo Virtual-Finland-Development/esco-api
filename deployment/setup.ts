@@ -3,6 +3,7 @@ import * as pulumi from "@pulumi/pulumi";
 export const stage = pulumi.getStack();
 export const projectName = pulumi.getProject();
 export const organizationName = pulumi.getOrganization();
+export const pulumiConfig = new pulumi.Config();
 
 export function getResourceConfig(name: string) {
   return {

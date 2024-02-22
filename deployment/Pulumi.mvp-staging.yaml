@@ -1,0 +1,2 @@
+config:
+  esco-api:createCloudWatchLogAlert: true

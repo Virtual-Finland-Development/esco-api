@@ -3,3 +3,4 @@ description: Esco API infra builder
 runtime: nodejs
 config:
     aws:region: eu-north-1
+    esco-api:createCloudWatchLogAlert: false

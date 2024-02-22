@@ -2,7 +2,7 @@ import * as aws from "@pulumi/aws";
 import * as pulumi from "@pulumi/pulumi";
 import { getResourceName, getTags, organizationName, stage } from "../setup";
 
-export async function createCloudWatchLogSubFilter(escoApiLambda: aws.lambda.Function) {
+export async function createCloudWatchLogsErrorAlerterSubscription(escoApiLambda: aws.lambda.Function) {
   const errorSubLambdaArn = new pulumi.StackReference(`${organizationName}/cloudwatch-logs-alerts/${stage}`).getOutput("errorSubLambdaFunctionArn");
 
   const escoApiLogGroupName = pulumi.interpolate`/aws/lambda/${escoApiLambda.name}`;
