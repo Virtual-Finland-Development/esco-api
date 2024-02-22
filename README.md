@@ -66,12 +66,13 @@ The steps to deploy the API are:
 
 To simplify the process, use the deployment make-script:
 
-> pre-requisites:
-> - pulumi installed
-> - AWS credentials configured
-> - nodejs installed
-> - bun-bundler installed
-
 ```bash
-make deploy-all
+make deploy
 ```
+
+Requirements for the above command are:
+- [GNU make](https://www.gnu.org/software/make/) installed
+- [Pulumi](https://www.pulumi.com/) installed
+- [Node.js](https://nodejs.org/en) installed
+- [Bun.sh](https://bun.sh/) bundler installed
+- AWS credentials configured
