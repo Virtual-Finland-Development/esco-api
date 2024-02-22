@@ -72,7 +72,7 @@ make deploy
 
 Requirements for the above command are:
 - [GNU make](https://www.gnu.org/software/make/) installed
-- [Pulumi](https://www.pulumi.com/) installed
+- [Pulumi](https://www.pulumi.com/) installed, credentials configured
 - [Node.js](https://nodejs.org/en) installed
 - [Bun.sh](https://bun.sh/) bundler installed
 - AWS credentials configured
