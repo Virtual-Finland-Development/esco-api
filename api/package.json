@@ -17,6 +17,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "aws4fetch": "^1.0.17",
     "valibot": "^0.20.1"
   }
 }
